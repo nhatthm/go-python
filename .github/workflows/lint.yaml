@@ -1,0 +1,36 @@
+---
+name: lint
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: nhatthm/gh-actions/checkout@master
+
+      - name: Setup Environment
+        run: |
+          make "$GITHUB_ENV"
+
+      - name: Setup
+        uses: nhatthm/gh-actions/find-go-version@master
+
+      - name: Install Go
+        uses: nhatthm/gh-actions/setup-go@master
+        with:
+          go-version: ${{ env.GO_LATEST_VERSION }}
+
+      - name: Install Python
+        uses: nhatthm/gh-actions/setup-python@master
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Lint
+        uses: nhatthm/gh-actions/golangci-lint@master

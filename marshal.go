@@ -256,11 +256,31 @@ func Unmarshal(o *Object, v any) error {
 	return &UnmarshalTypeError{Value: TypeName(o), Type: irv.Type()}
 }
 
+// UnmarshalAs converts the Python object to a value of the same type as T.
+func UnmarshalAs[T any](o *Object) (T, error) {
+	var v T
+
+	if err := Unmarshal(o, &v); err != nil {
+		return v, err
+	}
+
+	return v, nil
+}
+
 // MustUnmarshal converts the Python object to a value of the same type as v or panics if an error occurs.
 func MustUnmarshal(o *Object, v any) {
 	if err := Unmarshal(o, v); err != nil {
 		panic(err)
 	}
+}
+
+// MustUnmarshalAs converts the Python object to a value of the same type as T or panics if an error occurs.
+func MustUnmarshalAs[T any](o *Object) T {
+	var v T
+
+	MustUnmarshal(o, &v)
+
+	return v
 }
 
 func unmarshalString(o *Object) (string, error) {

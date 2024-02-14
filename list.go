@@ -116,11 +116,7 @@ func (l *List[T]) Set(index int, value T) {
 func (l *List[T]) Get(index int) T {
 	o := l.obj.Get(index)
 
-	var item T
-
-	MustUnmarshal(o, &item)
-
-	return item
+	return MustUnmarshalAs[T](o)
 }
 
 // AsObject returns the tuple as Object.

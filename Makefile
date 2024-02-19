@@ -15,7 +15,7 @@ $(VENDOR_DIR):
 	@$(GO) mod tidy
 
 .PHONY: lint
-lint:
+lint: $(GOLANGCI_LINT)
 	@$(GOLANGCI_LINT) run
 
 .PHONY: test

@@ -36,7 +36,7 @@ func TestTuple_Capacity(t *testing.T) {
 
 	assert.True(t, cpy3.PyTuple_Check(tuple.PyObject()))
 	assert.True(t, cpy3.PyTuple_CheckExact(tuple.PyObject()))
-	assert.True(t, pyTuple.RichCompareBool(tuple.PyObject(), cpy3.Py_EQ) == 1)
+	assert.True(t, pyTuple.RichCompareBool(tuple.PyObject(), cpy3.Py_EQ) == 1) //nolint: testifylint
 
 	assert.Equal(t, 10, tuple.Length())
 }
@@ -116,8 +116,6 @@ func TestNewTupleFromAny(t *testing.T) {
 }
 
 func TestTupleOfList(t *testing.T) {
-	t.Parallel()
-
 	tuple := python3.NewTupleForType[[]int](1)
 
 	tuple.Set(0, []int{1, 2})
@@ -131,8 +129,6 @@ func TestTupleOfList(t *testing.T) {
 }
 
 func TestTupleOfTuple(t *testing.T) {
-	t.Parallel()
-
 	tuple := python3.NewTupleForType[*python3.Tuple[int]](1)
 
 	tuple.Set(0, python3.NewTupleFromValues(1, 2))

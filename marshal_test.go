@@ -235,25 +235,25 @@ func TestUnmarshal_Int(t *testing.T) {
 			scenario:       "bool",
 			object:         python3.True,
 			expectedResult: 0,
-			expectedError:  `python3: cannot unmarshal bool into Go value of type int`,
+			expectedError:  `python3: cannot unmarshal bool into Go value of type int64`,
 		},
 		{
 			scenario:       "empty string",
 			object:         python3.NewString(""),
 			expectedResult: 0,
-			expectedError:  `python3: cannot unmarshal str into Go value of type int`,
+			expectedError:  `python3: cannot unmarshal str into Go value of type int64`,
 		},
 		{
 			scenario:       "string",
 			object:         python3.NewString("hello"),
 			expectedResult: 0,
-			expectedError:  `python3: cannot unmarshal str into Go value of type int`,
+			expectedError:  `python3: cannot unmarshal str into Go value of type int64`,
 		},
 		{
 			scenario:       "float",
 			object:         python3.NewFloat64(3.14),
 			expectedResult: 0,
-			expectedError:  `python3: cannot unmarshal float into Go value of type int`,
+			expectedError:  `python3: cannot unmarshal float into Go value of type int64`,
 		},
 		{
 			scenario:       "int",
@@ -424,7 +424,7 @@ func TestUnmarshal_Slice(t *testing.T) {
 			scenario:       "list of string",
 			object:         python3.NewListFromValues("hello", "world").AsObject(),
 			expectedResult: []int(nil),
-			expectedError:  `python3: cannot unmarshal str into Go value of type int`,
+			expectedError:  `python3: cannot unmarshal str into Go value of type int64`,
 		},
 		{
 			scenario:       "list of int",
@@ -445,7 +445,7 @@ func TestUnmarshal_Slice(t *testing.T) {
 			scenario:       "tuple of string",
 			object:         python3.NewTupleFromValues("hello", "world").AsObject(),
 			expectedResult: []int(nil),
-			expectedError:  `python3: cannot unmarshal str into Go value of type int`,
+			expectedError:  `python3: cannot unmarshal str into Go value of type int64`,
 		},
 		{
 			scenario:       "tuple of int",
@@ -485,7 +485,7 @@ func (i integer) MarshalPyObject() *python3.Object {
 	return python3.NewInt(int(i))
 }
 
-func (i *integer) UnmarshalPyObject(o *python3.Object) error {
+func (i *integer) UnmarshalPyObject(o *python3.Object) error { //nolint: unparam
 	*i = integer(python3.AsInt(o))
 
 	return nil

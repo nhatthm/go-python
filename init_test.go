@@ -11,5 +11,5 @@ import (
 func TestMain(m *testing.M) {
 	defer python3.Finalize()
 
-	os.Exit(m.Run())
+	os.Exit(m.Run()) // nolint: gocritic
 }

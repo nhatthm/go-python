@@ -10,9 +10,16 @@
 > [!IMPORTANT]
 > **Currently supports python-3.11 only.**
 
+The package provides a higher level for interacting with Python-3 C-API without directly using the `PyObject`.
+
+Main goals:
+- Provide generic a `Object` that interact with Golang types.
+- Automatically marshal and unmarshal Golang types to Python types.
+
 ## Prerequisites
 
-- `Go >= 1.21`
+- `Go >= 1.22`
+- `Python = 3.11`
 
 ## Install
 
@@ -20,13 +27,68 @@
 go get go.nhat.io/python3
 ```
 
-## Usage
-
-TBD
-
 ## Examples
 
-TBA
+```go
+package python3_test
+
+import (
+	"fmt"
+
+	"go.nhat.io/python3"
+)
+
+func ExampleVersion() {
+	sys := python3.MustImportModule("sys")
+	version := sys.GetAttr("version_info")
+
+	pyMajor := version.GetAttr("major")
+	defer pyMajor.DecRef()
+
+	pyMinor := version.GetAttr("minor")
+	defer pyMinor.DecRef()
+
+	pyReleaseLevel := version.GetAttr("releaselevel")
+	defer pyReleaseLevel.DecRef()
+
+	major := python3.AsInt(pyMajor)
+	minor := python3.AsInt(pyMinor)
+	releaseLevel := python3.AsString(pyReleaseLevel)
+
+	fmt.Println("major:", major)
+	fmt.Println("minor:", minor)
+	fmt.Println("release level:", releaseLevel)
+
+	// Output:
+	// major: 3
+	// minor: 11
+	// release level: final
+}
+```
+
+```go
+package python3_test
+
+import (
+	"fmt"
+
+	"go.nhat.io/python3"
+)
+
+func ExampleMath() {
+	math := python3.MustImportModule("math")
+
+	pyResult := math.CallMethodArgs("sqrt", 4)
+	defer pyResult.DecRef()
+
+	result := python3.AsFloat64(pyResult)
+
+	fmt.Printf("sqrt(4) = %.2f\n", result)
+
+	// Output:
+	// sqrt(4) = 2.00
+}
+```
 
 ## Donation
 

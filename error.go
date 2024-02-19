@@ -5,11 +5,11 @@ import (
 )
 
 // Exception is a Python exception.
-type Exception struct {
+type Exception struct { //nolint: errname,stylecheck
 	Message string
 }
 
-// Exception returns a string representation of the Exception.
+// Error returns a string representation of the Exception.
 func (e Exception) Error() string {
 	return e.Message
 }

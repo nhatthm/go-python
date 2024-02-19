@@ -74,13 +74,14 @@ type List[T any] struct {
 	obj *ListObject
 }
 
+// UnmarshalPyObject unmarshals a Python object to a list.
 func (l *List[T]) UnmarshalPyObject(o *Object) error {
-	if !IsList(o) && !IsList(o) {
+	if !IsList(o) && !IsTuple(o) {
 		return &UnmarshalTypeError{Value: TypeName(o), Type: reflect.TypeOf(l)}
 	}
 
-	if IsList(o) {
-
+	if IsTuple(o) {
+		o = (*Object)((*TupleObject)(o).AsList())
 	}
 
 	l.obj = (*ListObject)(o)

@@ -9,8 +9,6 @@ import (
 )
 
 func TestTypeName(t *testing.T) {
-	t.Parallel()
-
 	testCases := []struct {
 		scenario string
 		value    *python3.Object
@@ -56,8 +54,6 @@ func TestTypeName(t *testing.T) {
 	for _, tc := range testCases {
 		tc := tc
 		t.Run(tc.scenario, func(t *testing.T) {
-			t.Parallel()
-
 			actual := python3.TypeName(tc.value)
 
 			assert.Equal(t, tc.expected, actual)

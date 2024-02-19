@@ -54,6 +54,17 @@ func (o *TupleObject) AsObject() *Object {
 	return (*Object)(o)
 }
 
+// AsList converts a tuple to a list.
+func (o *TupleObject) AsList() *ListObject {
+	l := (*ListObject)(cpy3.PyList_New(o.Length()))
+
+	for i := 0; i < o.Length(); i++ {
+		l.Set(i, o.Get(i))
+	}
+
+	return l
+}
+
 // String returns the string representation of the object.
 func (o *TupleObject) String() string {
 	return asString((*cpy3.PyObject)(o))
@@ -118,6 +129,13 @@ func (t *Tuple[T]) Get(index int) T {
 // AsObject returns the tuple as Object.
 func (t *Tuple[T]) AsObject() *Object {
 	return t.obj.AsObject()
+}
+
+// AsList converts a tuple to a list.
+func (t *Tuple[T]) AsList() *List[T] {
+	return &List[T]{
+		obj: t.obj.AsList(),
+	}
 }
 
 // AsSlice converts a tuple to a slice.

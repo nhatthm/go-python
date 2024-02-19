@@ -53,6 +53,6 @@ func TestImportModule_NotExists(t *testing.T) {
 		},
 	}
 
-	require.Equal(t, actual, expected)
+	require.Equal(t, expected, actual)
 	require.EqualError(t, actual, `No module named 'not_exists'`)
 }

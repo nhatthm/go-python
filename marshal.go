@@ -15,17 +15,17 @@ type Marshaler interface {
 
 // Unmarshaler is the interface implemented by types that can unmarshal a Python object of themselves.
 type Unmarshaler interface {
-	UnmarshalPyObject(*Object) error
+	UnmarshalPyObject(o *Object) error
 }
 
 // Marshal returns the Python object for v.
-func Marshal(v any) (*Object, error) {
+func Marshal(v any) (*Object, error) { //nolint: cyclop,funlen,gocyclo
 	if v, ok := v.(Marshaler); ok {
 		return v.MarshalPyObject(), nil
 	}
 
 	if v := reflect.ValueOf(v); v.Kind() == reflect.Ptr && v.IsNil() {
-		return nil, nil
+		return nil, nil //nolint: nilnil
 	}
 
 	switch v := v.(type) {
@@ -147,7 +147,7 @@ func (e *UnmarshalTypeError) Error() string {
 }
 
 // Unmarshal converts the Python object to a value of the same type as v.
-func Unmarshal(o *Object, v any) error {
+func Unmarshal(o *Object, v any) error { //nolint: cyclop,funlen,gocognit,gocyclo
 	rv := reflect.ValueOf(v)
 	if rv.Kind() != reflect.Pointer || rv.IsNil() {
 		return &InvalidUnmarshalError{reflect.TypeOf(v)}

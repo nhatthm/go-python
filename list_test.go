@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"go.nhat.io/cpy3"
 
 	"go.nhat.io/python3"
@@ -36,7 +37,7 @@ func TestList_Capacity(t *testing.T) {
 
 	assert.True(t, cpy3.PyList_Check(list.PyObject()))
 	assert.True(t, cpy3.PyList_CheckExact(list.PyObject()))
-	assert.True(t, pyList.RichCompareBool(list.PyObject(), cpy3.Py_EQ) == 1)
+	assert.True(t, pyList.RichCompareBool(list.PyObject(), cpy3.Py_EQ) == 1) //nolint: testifylint
 
 	assert.Equal(t, 10, list.Length())
 }
@@ -116,8 +117,6 @@ func TestNewListFromAny(t *testing.T) {
 }
 
 func TestListOfListOfList(t *testing.T) {
-	t.Parallel()
-
 	list := python3.NewListForType[[][]int](1)
 
 	list.Set(0, [][]int{{1, 2}, {2, 3}})
@@ -129,8 +128,6 @@ func TestListOfListOfList(t *testing.T) {
 }
 
 func TestListOfTuple(t *testing.T) {
-	t.Parallel()
-
 	list := python3.NewListForType[*python3.Tuple[int]](1)
 
 	list.Set(0, python3.NewTupleFromValues(1, 2))
@@ -141,4 +138,15 @@ func TestListOfTuple(t *testing.T) {
 	expected := python3.NewTupleFromValues(1, 2)
 
 	assert.True(t, expected.AsObject().Equal(actual.AsObject()))
+}
+
+func TestListFromTuple(t *testing.T) {
+	tuple := python3.NewTupleFromValues(1, 2, 3)
+
+	var list python3.List[int]
+
+	err := list.UnmarshalPyObject(tuple.AsObject())
+	require.NoError(t, err)
+
+	assert.Equal(t, `[1, 2, 3]`, list.String())
 }

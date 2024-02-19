@@ -9,8 +9,6 @@ import (
 )
 
 func TestBool(t *testing.T) {
-	t.Parallel()
-
 	boolT := python3.NewBool(true)
 	boolF := python3.NewBool(false)
 

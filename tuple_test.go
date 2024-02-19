@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"go.nhat.io/cpy3"
+	cpy3 "go.nhat.io/cpy/v3"
 
 	python3 "go.nhat.io/python/v3"
 )

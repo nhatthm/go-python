@@ -1,6 +1,6 @@
 package python
 
-import "go.nhat.io/cpy3"
+import cpy3 "go.nhat.io/cpy/v3"
 
 // IsInt returns whether the given object is a Python int object.
 func IsInt(o PyObjector) bool {

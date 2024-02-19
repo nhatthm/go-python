@@ -1,7 +1,7 @@
 package python
 
 import (
-	"go.nhat.io/cpy3"
+	cpy3 "go.nhat.io/cpy/v3"
 	"go.nhat.io/once"
 )
 

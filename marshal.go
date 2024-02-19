@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"go.nhat.io/cpy3"
+	cpy3 "go.nhat.io/cpy/v3"
 )
 
 // Marshaler is the interface implemented by types that can marshal themselves into a Python object.

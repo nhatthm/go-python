@@ -1,6 +1,6 @@
 package python
 
-import "go.nhat.io/cpy3"
+import cpy3 "go.nhat.io/cpy/v3"
 
 // IsString returns true if o is a Python string object.
 func IsString(o PyObjector) bool {

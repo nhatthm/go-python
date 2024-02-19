@@ -1,6 +1,6 @@
 package python
 
-import "go.nhat.io/cpy3"
+import cpy3 "go.nhat.io/cpy/v3"
 
 // IsFloat returns true if the object is a Python float.
 func IsFloat(o PyObjector) bool {

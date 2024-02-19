@@ -1,6 +1,6 @@
 package python
 
-import "go.nhat.io/cpy3"
+import cpy3 "go.nhat.io/cpy/v3"
 
 // True is a wrapper of cpy3.Py_True.
 var True = NewObject(cpy3.Py_True)

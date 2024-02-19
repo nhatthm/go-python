@@ -1,8 +1,6 @@
 package python
 
-import (
-	"go.nhat.io/cpy3"
-)
+import cpy3 "go.nhat.io/cpy/v3"
 
 // ErrPythonInterpreterNotInitialized is the error message when the python interpreter is not initialized.
 var ErrPythonInterpreterNotInitialized = "cannot initialize the python interpreter"

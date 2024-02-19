@@ -1,8 +1,6 @@
 package python
 
-import (
-	"go.nhat.io/cpy3"
-)
+import cpy3 "go.nhat.io/cpy/v3"
 
 // Exception is a Python exception.
 type Exception struct { //nolint: errname,stylecheck

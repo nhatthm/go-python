@@ -1,6 +1,6 @@
 package python
 
-import "go.nhat.io/cpy3"
+import cpy3 "go.nhat.io/cpy/v3"
 
 // Objector is an interface for types that can return an Object.
 type Objector interface {

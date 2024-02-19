@@ -3,7 +3,7 @@ package python
 import (
 	"reflect"
 
-	"go.nhat.io/cpy3"
+	cpy3 "go.nhat.io/cpy/v3"
 )
 
 // IsList returns true if the object is a tuple.

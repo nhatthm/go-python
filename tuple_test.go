@@ -1,4 +1,4 @@
-package python3_test
+package python_test
 
 import (
 	"testing"
@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"go.nhat.io/cpy3"
 
-	"go.nhat.io/python3"
+	python3 "go.nhat.io/python/v3"
 )
 
 func TestTuple_DecRefNil(t *testing.T) {

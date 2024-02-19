@@ -1,11 +1,11 @@
-package python3_test
+package python_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
-	"go.nhat.io/python3"
+	python3 "go.nhat.io/python/v3"
 )
 
 func TestString(t *testing.T) {

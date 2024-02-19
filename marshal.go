@@ -1,4 +1,4 @@
-package python3
+package python
 
 import "C"
 import (

@@ -1,10 +1,10 @@
-package python3_test
+package python_test
 
 import (
 	"os"
 	"testing"
 
-	"go.nhat.io/python3"
+	python3 "go.nhat.io/python/v3"
 )
 
 // TestMain is the entry point for the test suite.

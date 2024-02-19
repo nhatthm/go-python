@@ -1,4 +1,4 @@
-MODULE_NAME=python3
+MODULE_NAME=python
 
 VENDOR_DIR = vendor
 

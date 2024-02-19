@@ -1,4 +1,4 @@
-package python3
+package python
 
 // TypeName returns the name of the type of the given object.
 func TypeName(o *Object) string {

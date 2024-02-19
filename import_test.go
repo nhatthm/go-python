@@ -1,4 +1,4 @@
-package python3_test
+package python_test
 
 import (
 	"runtime"
@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"go.nhat.io/python3"
+	python3 "go.nhat.io/python/v3"
 )
 
 func TestMustImportModule(t *testing.T) {

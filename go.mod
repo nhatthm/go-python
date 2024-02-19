@@ -1,4 +1,4 @@
-module go.nhat.io/python3
+module go.nhat.io/python/v3
 
 go 1.22
 

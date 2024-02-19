@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"go.nhat.io/python3"
+	python3 "go.nhat.io/python/v3"
 )
 
 func main() {

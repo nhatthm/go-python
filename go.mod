@@ -3,9 +3,9 @@ module go.nhat.io/python/v3
 go 1.22
 
 require (
-	github.com/stretchr/testify v1.9.0
+	github.com/stretchr/testify v1.10.0
 	go.nhat.io/cpy/v3 v3.11.1
-	go.nhat.io/once v0.2.0
+	go.nhat.io/once v0.3.0
 )
 
 require (

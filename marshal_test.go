@@ -90,7 +90,6 @@ func TestMarshal(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		tc := tc
 		t.Run(tc.scenario, func(t *testing.T) {
 			actual, err := python3.Marshal(tc.value)
 
@@ -165,7 +164,6 @@ func TestUnmarshal_Bool(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		tc := tc
 		t.Run(tc.scenario, func(t *testing.T) {
 			var actual bool
 
@@ -207,7 +205,6 @@ func TestUnmarshal_String(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		tc := tc
 		t.Run(tc.scenario, func(t *testing.T) {
 			var actual string
 
@@ -308,7 +305,6 @@ func TestUnmarshal_Int(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		tc := tc
 		t.Run(tc.scenario, func(t *testing.T) {
 			actual := reflect.New(reflect.TypeOf(tc.expectedResult)).Interface()
 
@@ -365,7 +361,6 @@ func TestUnmarshal_Float(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		tc := tc
 		t.Run(tc.scenario, func(t *testing.T) {
 			actual := reflect.New(reflect.TypeOf(tc.expectedResult)).Interface()
 
@@ -460,7 +455,6 @@ func TestUnmarshal_Slice(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		tc := tc
 		t.Run(tc.scenario, func(t *testing.T) {
 			actual := reflect.New(reflect.TypeOf(tc.expectedResult)).Interface()
 
@@ -479,7 +473,7 @@ func TestUnmarshal_Slice(t *testing.T) {
 	}
 }
 
-type integer int
+type integer int //nolint: recvcheck
 
 func (i integer) MarshalPyObject() *python3.Object {
 	return python3.NewInt(int(i))

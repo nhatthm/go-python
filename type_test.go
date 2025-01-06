@@ -52,7 +52,6 @@ func TestTypeName(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		tc := tc
 		t.Run(tc.scenario, func(t *testing.T) {
 			actual := python3.TypeName(tc.value)
 

@@ -4,7 +4,7 @@ go 1.22
 
 require (
 	github.com/stretchr/testify v1.10.0
-	go.nhat.io/cpy/v3 v3.11.1
+	go.nhat.io/cpy/v3 v3.11.2
 	go.nhat.io/once v0.3.0
 )
 

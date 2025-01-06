@@ -58,7 +58,7 @@ func (o *TupleObject) AsObject() *Object {
 func (o *TupleObject) AsList() *ListObject {
 	l := (*ListObject)(cpy3.PyList_New(o.Length()))
 
-	for i := 0; i < o.Length(); i++ {
+	for i := range o.Length() {
 		l.Set(i, o.Get(i))
 	}
 
@@ -143,7 +143,7 @@ func (t *Tuple[T]) AsSlice() []T {
 	length := t.Length()
 	slice := make([]T, length)
 
-	for i := 0; i < length; i++ {
+	for i := range length {
 		slice[i] = t.Get(i)
 	}
 

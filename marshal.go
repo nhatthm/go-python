@@ -105,7 +105,7 @@ func MustMarshal(v any) *Object {
 func marshalSlice(v reflect.Value) *Object {
 	l := make([]any, v.Cap(), v.Len())
 
-	for i := 0; i < v.Len(); i++ {
+	for i := range v.Len() {
 		l[i] = v.Index(i).Interface()
 	}
 
@@ -337,7 +337,7 @@ func unmarshalSlice(o *Object, dest reflect.Value) error {
 		}
 	}()
 
-	for i := 0; i < o.Length(); i++ {
+	for i := range o.Length() {
 		item := o.GetItem(i)
 
 		defers = append(defers, item.DecRef)

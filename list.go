@@ -137,7 +137,7 @@ func (l *List[T]) AsSlice() []T {
 	length := l.Length()
 	slice := make([]T, length)
 
-	for i := 0; i < length; i++ {
+	for i := range length {
 		slice[i] = l.Get(i)
 	}
 

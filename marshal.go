@@ -89,7 +89,7 @@ func Marshal(v any) (*Object, error) { //nolint: cyclop,funlen,gocyclo
 		return marshalSlice(rv), nil
 	}
 
-	return nil, fmt.Errorf("cannot marshal value of %T to python object", v) //nolint: goerr113
+	return nil, fmt.Errorf("cannot marshal value of %T to python object", v) //nolint: err113
 }
 
 // MustMarshal returns the Python object for v or panics if an error occurs.

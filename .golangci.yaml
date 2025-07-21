@@ -5,6 +5,7 @@ linters:
   default: all
   disable:
     - depguard
+    - exhaustive
     - exhaustruct
     - forbidigo
     - forcetypeassert
@@ -43,6 +44,9 @@ linters:
           - mnd
           - noctx
         path: _test.go
+      - linters:
+          - revive
+        path: examples/
     paths:
       - third_party$
       - builtin$

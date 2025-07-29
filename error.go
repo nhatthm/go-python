@@ -39,28 +39,26 @@ func MustSuccess() {
 
 // LastError returns the last error that occurred in the Python interpreter.
 func LastError() error {
-	pType, pValue, pTraceback := fetchError()
-	if pValue == nil {
+	pExec := fetchError()
+	if pExec == nil {
 		return nil
 	}
 
 	defer ClearError()
-	defer pType.DecRef()
-	defer pValue.DecRef()
-	defer pTraceback.DecRef()
+	defer pExec.DecRef()
 
 	switch {
-	case isException(pType, cpy3.PyExc_ModuleNotFoundError):
-		return newErrModuleNotFound(pValue)
+	case isException(pExec, cpy3.PyExc_ModuleNotFoundError):
+		return newErrModuleNotFound(pExec)
 
-	case isException(pType, cpy3.PyExc_ImportError):
-		return newImportError(pValue)
+	case isException(pExec, cpy3.PyExc_ImportError):
+		return newImportError(pExec)
 
-	case isException(pType, cpy3.PyExc_IndexError):
-		return IndexError{Exception: NewException(pValue.String())}
+	case isException(pExec, cpy3.PyExc_IndexError):
+		return IndexError{Exception: NewException(pExec.String())}
 	}
 
-	return NewException(pValue.String())
+	return NewException(pExec.String())
 }
 
 // isException returns true if err is an instance of ex.
@@ -78,13 +76,8 @@ func ClearError() {
 }
 
 // fetchError returns the last error that occurred in the Python interpreter.
-func fetchError() (*Object, *Object, *Object) {
-	pType, pValue, pTraceback := cpy3.PyErr_Fetch()
-	if pType == nil {
-		return nil, nil, nil
-	}
-
-	return NewObject(pType), NewObject(pValue), NewObject(pTraceback)
+func fetchError() *Object {
+	return NewObject(cpy3.PyErr_GetRaisedException())
 }
 
 // NewException creates a new Exception.

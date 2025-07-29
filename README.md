@@ -3,8 +3,8 @@
 [![GitHub Releases](https://img.shields.io/github/v/release/nhatthm/go-python)](https://github.com/nhatthm/go-python/releases/latest)
 [![Build Status](https://github.com/nhatthm/go-python/actions/workflows/test.yaml/badge.svg)](https://github.com/nhatthm/go-python/actions/workflows/test.yaml)
 [![codecov](https://codecov.io/gh/nhatthm/go-python/branch/master/graph/badge.svg?token=eTdAgDE2vR)](https://codecov.io/gh/nhatthm/go-python)
-[![Go Report Card](https://goreportcard.com/badge/go.nhat.io/python)](https://goreportcard.com/report/go.nhat.io/python)
-[![GoDevDoc](https://img.shields.io/badge/dev-doc-00ADD8?logo=go)](https://pkg.go.dev/go.nhat.io/python)
+[![Go Report Card](https://goreportcard.com/badge/go.nhat.io/python/v3)](https://goreportcard.com/report/go.nhat.io/python/v3)
+[![GoDevDoc](https://img.shields.io/badge/dev-doc-00ADD8?logo=go)](https://pkg.go.dev/go.nhat.io/python/v3)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=PJZSGJN57TDJY)
 
 > [!IMPORTANT]

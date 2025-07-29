@@ -8,7 +8,7 @@
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=PJZSGJN57TDJY)
 
 > [!IMPORTANT]
-> **Currently supports python-3.11 only.**
+> **Currently supports python-3.12 only.**
 
 The package provides a higher level for interacting with Python-3 C-API without directly using the `PyObject`.
 
@@ -18,8 +18,8 @@ Main goals:
 
 ## Prerequisites
 
-- `Go >= 1.22`
-- `Python = 3.11`
+- `Go >= 1.24`
+- `Python = 3.12`
 
 ## Install
 

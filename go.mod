@@ -5,7 +5,7 @@ go 1.24
 toolchain go1.24.5
 
 require (
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.0
 	go.nhat.io/cpy/v3 v3.12.0
 	go.nhat.io/once v0.3.0
 )
